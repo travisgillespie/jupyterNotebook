@@ -1,2 +1,2 @@
-# Udacity Projects
-Repository of my Udacity projects
+# Jupyter Notebook Projects
+Repository of my Jupyter Notebook projects
