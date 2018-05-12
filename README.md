@@ -1,2 +1,2 @@
 # Jupyter Notebook Projects
-Repository of my Jupyter Notebook projects
+Repository of my Jupyter Notebook projects using Python
