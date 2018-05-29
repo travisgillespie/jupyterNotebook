@@ -1,6 +1,8 @@
 # Project Overview
 
-This exploratory dataset allowed me to query the Chinook Database. A factitious company which holds information about a music store. For this project, I assisted the Chinook team with understanding the media in their store, their customers and employees, and their invoice information. The schema for the Chinook Database is provided below, followed by four questions with the SQL queries that were used to answer them.
+This exploratory dataset allowed me to query the Chinook Database. A factitious company which holds information about a music store. For this project, I assisted the Chinook team with understanding the media in their store, their customers and employees, and their invoice information. I used [SQLite](http://sqlitebrowser.org/ "SQLite") as a database browsers to work the Chinook Database, located in _chinook-db.zip_. The schema for the Chinook Database is provided below, followed by four questions with the SQL queries that were used to answer them.
+
+
 
 ![Image](./images/erd.png "ERD")
 
