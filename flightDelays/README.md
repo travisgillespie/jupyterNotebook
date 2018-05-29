@@ -1,6 +1,6 @@
 # Project Overview
 
-I created three Tableau dashboards for this project. The [Flight Delays](https://www.kaggle.com/usdot/flight-delays/data "Flight Delays Data") data for this project comes from a Kaggle dataset. It tracks performance of on-time US domestic flights operated by large air carriers in 2015. The data can be downloaded from Kaggle, or found in this project's [data](https://github.com/travisgillespie/jupyterNotebook/tree/master/flightDelays/data "data") folder.
+I created three Tableau dashboards for this project. The [Flight Delays](https://www.kaggle.com/usdot/flight-delays/data "Flight Delays Data") data for this project comes from a Kaggle dataset. It tracks performance of on-time US domestic flights operated by large air carriers in 2015. The data can be downloaded from Kaggle, or found in _data.zip_.
 
 
 1: This first dashboard displays the [number of delays](https://public.tableau.com/profile/travis.gillespie#!/vizhome/flight_delays/Dashboard_AirportDelays "Airport Delays Dashboard") (both for arrivals and departures). One key finding displayed on both graphs is the busiest hubs have more delays throughout the year (e.g. ATL, ORD, DFW, DEN, and LAX). This link provides a list of the busiest airports in the United States.
