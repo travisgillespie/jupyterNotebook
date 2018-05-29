@@ -1,2 +1,2 @@
-# Jupyter Notebook Projects
-Repository of my Jupyter Notebook projects using Python
+# Udacity Projects
+Repository of my projects using Python, SQL, and Tableau.
