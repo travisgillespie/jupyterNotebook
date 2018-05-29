@@ -1,9 +1,19 @@
 # Project Overview
 
-I created three Tableau dashboards for this project. The [Flight Delays](https://www.kaggle.com/usdot/flight-delays/data "Flight Delays Data") data for this project comes from a Kaggle dataset. It tracks performance of on-time US domestic flights operated by large air carriers in 2015. The data can be downloaded from Kaggle, or found in _data.zip_.
+This exploratory dataset allowed me to query the Chinook Database. A factitious company which holds information about a music store. For this project, I assisted the Chinook team with understanding the media in their store, their customers and employees, and their invoice information. The schema for the Chinook Database is provided below, followed by four questions with the SQL queries that were used to answer them.
+
+![Image](./images/erd.png "ERD")
 
 
-1:
+
+
+
+## 1: Who Purchased the Least Amount of Music?
+
+![Image](./images/1_LeastAmountOfMusic.png "Least Amount of Music")
+
+This data could be useful to companies running an ads campaign to target top clients. Since the chart displays all clients, a company can easily see who the lowest paying clients are, remove them from their campaigns list and allocate that money toward clients who have made more purchases.
+
 ```SQL
 SELECT c.FirstName || " " || c.LastName AS "Name", SUM(il.Quantity * il.UnitPrice) AS "Total Purchases"
 From Invoice AS i
@@ -16,28 +26,66 @@ ORDER BY "Total Purchases";
 ```
 
 
-This first dashboard displays the [number of delays](https://public.tableau.com/profile/travis.gillespie#!/vizhome/flight_delays/Dashboard_AirportDelays "Airport Delays Dashboard") (both for arrivals and departures). One key finding displayed on both graphs is the busiest hubs have more delays throughout the year (e.g. ATL, ORD, DFW, DEN, and LAX). This link provides a list of the busiest airports in the United States.
-Use the slider at the bottom of this dashboard to scrub through the data.
-Colors were selected based on suggestions in the blog, 5 tips on designing colorblind friendly visualizations.
-
-[![Image](./images/FlightDelaysByAirport.png)](https://public.tableau.com/profile/travis.gillespie#!/vizhome/flight_delays/Dashboard_AirportDelays "Airport Delays Dashboard")
 
 
+## 2: What are the Most Popular Songs?
 
-2: This second dashboard compares the [number of delayed and on-time arrivals](https://public.tableau.com/profile/travis.gillespie#!/vizhome/flight_delays/Dashboard_DestinationDelays "On-Time vs Delayed"). The following graphs display my initial findings.
+![Image](./images/2_MostPopularSongs.png "Most Popular Songs")
 
-* Top: As the total number of arrivals (per airport) increase, the number of delayed and on-time arrivals increase. Notice the spread between delayed and on-time arrivals also increases.
+This graph lists the top 10 most purchased songs, and the number of times the song was purchased. Whether looking at “most-or-least popular”, it is important to note that some song’s sales reports will have a lower volume due to their release date (i.e. a new song vs old song). In that case, it might be more appropriate to use the term “most purchased” rather than “most popular”.
 
-* Bottom Left: An r-square value of 0.98 suggests there is a strong correlation between the number of delayed and on-time arrivals.
+```SQL
+SELECT a.Name AS "Artist", t.Name AS Song, SUM(il.Quantity) AS Sum
+FROM  InvoiceLine AS il
+JOIN Track AS t
+  ON il.TrackId = t.TrackId
+JOIN Album AS al
+  ON t.AlbumId = al.AlbumId
+JOIN Artist AS A  
+  ON al.ArtistId = a.ArtistId
+GROUP BY a.Name
+ORDER BY Sum DESC
+LIMIT 10;
+```
 
-* Bottom Right: Although the spread increases (shown in top graph) as the total number of arrivals increase, the percent difference stays within a 15-40% range for busy hubs; suggesting busier airports are highly organized and can manage greater traffic loads.
-
-[![Image](./images/OntimeVsDelayed.png)](https://public.tableau.com/profile/travis.gillespie#!/vizhome/flight_delays/Dashboard_DestinationDelays "On-Time vs Delayed")
 
 
 
-3: The third dashboard displays the [median length of delays per month](https://public.tableau.com/profile/travis.gillespie#!/vizhome/flight_delays/Dashboard_DelaysbyMonth "Delays per Month"). Users can also drill-down to view the median length of daily delays per month. For example, the monthly view shows June having the highest median delays. After drilling down into a daily view per month, we can see that the highest median delay values fall within other months (outside of June). In fact, the 18th of July has a median delay value of 30, while the 18th of June (date of highest median delay in June) has a median delay of 29.
 
-It would be interesting to gather data over multiple years to look for cyclical trends, such as higher rates of delays at the end of December and beginning of January. Did this only occur during 2015, or are the higher median delay values due to higher rates of travel during the holidays?
+## 3: How Many Songs Did Each Rock Artist Sell?
 
-[![Image](./images/DelaysPerMonth.png)](https://public.tableau.com/profile/travis.gillespie#!/vizhome/flight_delays/Dashboard_DelaysbyMonth "Delays per Month")
+![Image](./images/3_SongsSold.png "Songs Sold")
+
+The bar graph displays the number of songs each rock artist has sold. This information could help a company see who their top performers are in order to run special promotion, or inform clients the next time that artist is playing a concert near their city.
+
+
+```SQL
+SELECT a.Name AS "Artist", SUM(il.Quantity) AS "Number of Songs Sold"
+FROM  InvoiceLine AS il
+JOIN Track AS t
+  ON il.TrackId = t.TrackId
+JOIN Album AS al
+  ON t.AlbumId = al.AlbumId
+JOIN Artist AS a  
+  ON al.ArtistId = a.ArtistId
+WHERE t.GenreId = 1
+GROUP BY a.Name
+ORDER BY SUM(il.Quantity) DESC
+```
+
+
+
+
+## 4: What is the Range of Customer's Invoice Purchases?
+
+![Image](./images/4_RangeOfPurchases.png "Range of Purchases")
+
+Using the Invoices table, I was able to aggregate the minimum, maximum, and average amount of each client’s purchases. Notice the graph displays this range.
+
+```SQL
+SELECT MIN(i.Total) AS "MIN", AVG(i.Total) AS "AVG", MAX(i.Total) AS "MAX", c.FirstName || " " || c.LastName AS "Name", c.Email, c.Phone
+FROM Invoice AS i
+JOIN Customer AS c
+  ON i.CustomerId = c.CustomerId
+GROUP BY i.CustomerId
+```
