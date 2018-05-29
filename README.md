@@ -1,2 +1,2 @@
 # Udacity Projects
-Repository of my projects using Python, SQL, and Tableau.
+Repository of my Udacity projects using Python, SQL, and Tableau.
