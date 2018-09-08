@@ -4,7 +4,7 @@ Udacity Data Analysis Project 4
 ## Project Overview
 This project uses R to apply exploratory data analysis techniques, explore relationships in one variable to multiple variables, and explore a selected data set for distributions, outliers, plus anomalies.
 
-**Data Sets**<br>
+**Data Set**<br>
 The data set contains 1,599 red wines, and includes 12 variables that represent chemical properties and quality of the wine. At least 3 wine experts rated the quality of each wine, providing a rating between 0 (very bad) and 10 (very excellent).
 
 **What do I need to install?**<br>
