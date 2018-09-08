@@ -1,7 +1,7 @@
 # Explore-and-Summarize-Data
 Udacity Data Analysis Project 4
 
-# [View the project](http://travisgillespie.github.io/Explore_and_Summarize_Data/)
+# [View the project](http://travisgillespie.github.io/udacityProjects/redWine_exploreAndSummarizeData/Explore_and_Summarize_Data.html/)
 
 ## Project Overview
 This project uses R to apply exploratory data analysis techniques, explore relationships in one variable to multiple variables, and explore a selected data set for distributions, outliers, plus anomalies.
