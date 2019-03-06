@@ -20,7 +20,7 @@ class Employee:
 print(Employee.num_of_employees)
 emp1 = Employee("Travis", "Gillespie", 100000)
 emp2 = Employee("Test", "User", 80000)
-emp3 = Employee("Test3", "User3", 60000)
+# emp3 = Employee("Test3", "User3", 60000)
 # emp4 = Employee("Test4", "User4", 40000)
 # emp5 = Employee("Test5", "User5", 50000)
 
