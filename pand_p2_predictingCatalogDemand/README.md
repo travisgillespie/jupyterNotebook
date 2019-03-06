@@ -1,0 +1,1 @@
+Read any of the files labeled *Data Report* for information regarding and answers to project questions. For additional information such as data gathering, cleaning, and analysis see any of the files labeled *Data Wrangling*.
